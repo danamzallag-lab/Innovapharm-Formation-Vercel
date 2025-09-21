@@ -1,0 +1,13 @@
+{
+  "name": "innovapharm-formation",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo \"Static site - no build step\"",
+    "start": "npx serve -s public -l 3000"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

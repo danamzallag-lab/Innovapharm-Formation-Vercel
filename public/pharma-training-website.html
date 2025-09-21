@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovapharm Formation - Nouvelles Missions du Pharmacien</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- EmailJS pour l'envoi des formulaires -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            // Configuration EmailJS - ACTIF !
+            emailjs.init("Ic2F1NimZNpj60ix8"); // Clé publique configurée
+        })();
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary-blue: #0A2342;
+            --turquoise: #00AEEF;
+            --emerald: #00695C;
+            --coral: #FF6B35;
+            --text-dark: #333333;
+            --text-gray: #666666;
+            --bg-white: #FFFFFF;
+            --bg-light: #F8FAFC;
+            --bg-gradient-start: #E6F4FF;
+            --bg-gradient-end: #00AEEF;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --border-light: #E5E7EB;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-white);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            background: var(--bg-white);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        nav.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow-md);
+        }
+        
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 20px;
+        }
+        
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .logo .innovapharm {
+            color: #000000;
+        }
+        
+        .logo .formation {
+            color: var(--turquoise);
+            margin-left: 5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--turquoise);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--turquoise);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background: var(--text-dark);
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, rgba(255,255,255,0.5) 50%, var(--bg-gradient-start) 100%);
+            padding: 140px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -30%;
+            width: 60%;
+            height: 100%;
+            background: radial-gradient(circle, var(--bg-gradient-end) 0%, transparent 70%);
+            opacity: 0.05;
+            animation: pulse 15s ease-in-out infinite;
+        }
+        
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -20%;
+            width: 40%;
+            height: 100%;
+            background: radial-gradient(circle, var(--turquoise) 0%, transparent 70%);
+            opacity: 0.03;
+            animation: pulse 20s ease-in-out infinite reverse;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .hero h1 .emoji {
+            display: inline-block;
+            animation: rocket 2s ease-in-out infinite;
+            margin-right: 0.5rem;
+        }
+        
+        @keyframes rocket {
+            0%, 100% { transform: translateY(0); }
+            25% { transform: translateY(-5px) rotate(5deg); }
+            75% { transform: translateY(3px) rotate(-5deg); }
+        }
+        
+        .hero .subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            color: var(--text-gray);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 400;
+            line-height: 1.6;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 18px 40px;
+            background: var(--coral);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.25);
+            animation: fadeInUp 0.8s ease 0.4s both;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 107, 53, 0.35);
+        }
+        
+        .cta-button:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .cta-primary {
+            background: var(--turquoise);
+            box-shadow: 0 4px 20px rgba(0, 174, 239, 0.25);
+        }
+        
+        .cta-primary:hover {
+            box-shadow: 0 8px 30px rgba(0, 174, 239, 0.35);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+        
+        .bg-light {
+            background: var(--bg-light);
+        }
+        
+        h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+            text-align: center;
+            letter-spacing: -0.01em;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Problem Section */
+        .problem-card {
+            background: var(--bg-white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+        
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .problem-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+        
+        .problem-list li {
+            padding: 1rem 0 1rem 3rem;
+            position: relative;
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            border-bottom: 1px solid var(--border-light);
+        }
+        
+        .problem-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .problem-list li::before {
+            content: '⚠️';
+            position: absolute;
+            left: 0.5rem;
+            top: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Solution Section */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .solution-card {
+            background: var(--bg-white);
+            padding: 2.5rem 2rem;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .solution-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--turquoise), var(--coral));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .solution-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--turquoise);
+        }
+        
+        .solution-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .solution-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+            animation-delay: calc(var(--delay) * 0.2s);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .solution-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .solution-card p {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+        
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: var(--bg-white);
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s ease;
+        }
+        
+        .benefit-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--turquoise);
+        }
+        
+        .benefit-icon {
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--turquoise), var(--emerald));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            flex-shrink: 0;
+        }
+        
+        .benefit-item h3 {
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .benefit-item p {
+            color: var(--text-gray);
+        }
+        
+        /* Case Study */
+        .case-study {
+            background: linear-gradient(135deg, var(--bg-light) 0%, var(--bg-white) 100%);
+            padding: 3rem;
+            border-radius: 24px;
+            margin: 2rem 0;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .case-study h3 {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 2rem;
+            font-weight: 600;
+        }
+        
+        .case-study-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .case-stat {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-white);
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+            transition: transform 0.3s ease;
+        }
+        
+        .case-stat:hover {
+            transform: scale(1.05);
+        }
+        
+        .case-stat .number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--turquoise), var(--emerald));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+        
+        .case-stat .label {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+        
+        /* Testimonials */
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .testimonial {
+            background: var(--bg-white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .testimonial:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            font-size: 4rem;
+            background: linear-gradient(135deg, var(--turquoise), var(--emerald));
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            padding-top: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-blue);
+            text-align: right;
+            font-size: 0.95rem;
+        }
+        
+        /* Bonus Section */
+        .bonus-box {
+            background: linear-gradient(135deg, var(--turquoise) 0%, var(--emerald) 100%);
+            color: white;
+            padding: 4rem 3rem;
+            border-radius: 24px;
+            text-align: center;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 174, 239, 0.2);
+        }
+        
+        .bonus-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .bonus-box h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+            color: white;
+        }
+        
+        .bonus-box p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .bonus-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+            margin-top: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .bonus-feature {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .bonus-feature strong {
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Why Choose Section */
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .why-card {
+            text-align: center;
+            padding: 2.5rem 2rem;
+            background: var(--bg-white);
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .why-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--turquoise), var(--coral));
+            transition: width 0.3s ease;
+        }
+        
+        .why-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .why-card:hover::before {
+            width: 100%;
+        }
+        
+        .why-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        .why-card h3 {
+            font-size: 1.3rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .why-card p {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+        
+        /* CTA Final Section */
+        .cta-final {
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-light) 100%);
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-final::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%2300AEEF' stroke-width='0.5' opacity='0.1'%3E%3Ccircle cx='50' cy='50' r='40'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: 100px 100px;
+            animation: backgroundMove 20s linear infinite;
+        }
+        
+        @keyframes backgroundMove {
+            from { transform: translate(0, 0); }
+            to { transform: translate(100px, 100px); }
+        }
+        
+        .cta-final h2 {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .cta-final p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-blue);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        footer p {
+            opacity: 0.9;
+        }
+        
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .modal-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background: var(--bg-white);
+            border-radius: 24px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+        
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+        
+        .modal-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .modal-header h2 {
+            color: var(--primary-blue);
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .modal-header p {
+            color: var(--text-gray);
+            font-size: 1.05rem;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 40px;
+            height: 40px;
+            background: var(--bg-light);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--text-gray);
+            transition: all 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            background: var(--coral);
+            color: white;
+            transform: rotate(90deg);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            color: var(--text-dark);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .form-group label .required {
+            color: var(--coral);
+            margin-left: 2px;
+        }
+        
+        .form-group input:valid:not(:placeholder-shown),
+        .form-group textarea:valid:not(:placeholder-shown) {
+            border-color: var(--emerald);
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: var(--bg-white);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--turquoise);
+            box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.1);
+        }
+        
+        .form-group input.error,
+        .form-group textarea.error {
+            border-color: var(--coral);
+        }
+        
+        .error-message {
+            color: var(--coral);
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        .form-actions {
+            margin-top: 2rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .btn-submit {
+            padding: 15px 40px;
+            background: var(--turquoise);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 174, 239, 0.25);
+        }
+        
+        .btn-submit:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 174, 239, 0.35);
+        }
+        
+        .btn-submit:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .btn-cancel {
+            padding: 15px 40px;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            border: 1px solid var(--border-light);
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-cancel:hover {
+            background: var(--bg-white);
+            border-color: var(--text-gray);
+        }
+        
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .success-message h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+        
+        .success-message p {
+            color: var(--text-gray);
+        }
+        
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-white);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow-md);
+                gap: 1rem;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .hero {
+                padding: 120px 0 80px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .case-study-content,
+            .testimonials-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                padding: 2rem 1.5rem;
+                width: 95%;
+            }
+        }
+        
+        /* Scroll animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .scroll-animate.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <div class="logo">
+                <span class="innovapharm">Innovapharm</span>
+                <span class="formation">Formation</span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero">Accueil</a></li>
+                <li><a href="#problem">Défis</a></li>
+                <li><a href="#solution">Solution</a></li>
+                <li><a href="#benefits">Bénéfices</a></li>
+                <li><a href="#case-study">Résultats</a></li>
+                <li><a href="#testimonials">Témoignages</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container hero-content">
+            <h1><span class="emoji">🚀</span>Donnez un nouvel élan à votre officine grâce aux nouvelles missions du pharmacien</h1>
+            <p class="subtitle">Transformez les contraintes réglementaires en opportunités de croissance. Notre formation vous guide pas à pas vers une pratique moderne et rentable.</p>
+            <a href="#" onclick="openModal(event)" class="cta-button">
+                <span>Réservez une présentation gratuite</span>
+                <span style="font-size: 1.2rem;">→</span>
+            </a>
+        </div>
+    </section>
+    
+    <!-- Problem Section -->
+    <section id="problem" class="bg-light">
+        <div class="container">
+            <h2>Les défis actuels des officines</h2>
+            <p class="section-subtitle">Des opportunités inexploitées qui impactent votre rentabilité</p>
+            <div class="problem-card scroll-animate">
+                <p style="font-size: 1.1rem; margin-bottom: 2rem;">Les nouvelles missions pharmaceutiques représentent un potentiel de croissance exceptionnel... Pourtant, 80% des officines peinent à les mettre en œuvre efficacement.</p>
+                <ul class="problem-list">
+                    <li>Missions perçues comme chronophages et complexes</li>
+                    <li>Équipes non formées ou réticentes à les proposer</li>
+                    <li>Réglementation floue et facturation mal maîtrisée</li>
+                    <li>Crainte de perturber la relation patient</li>
+                </ul>
+                <p style="font-size: 1.1rem; font-weight: 600; color: var(--coral); text-align: center; margin-top: 2rem;">
+                    Impact financier : Un manque à gagner pouvant atteindre plusieurs milliers d'euros par mois
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Solution Section -->
+    <section id="solution">
+        <div class="container">
+            <h2>Une formation qui change la donne</h2>
+            <p class="section-subtitle">Méthodologie éprouvée pour intégrer les nouvelles missions sans effort</p>
+            <div class="solution-grid">
+                <div class="solution-card scroll-animate" style="--delay: 0;">
+                    <div class="solution-icon">📋</div>
+                    <h3>Protocoles clairs</h3>
+                    <p>Guides pas à pas pour chaque type d'entretien, avec scripts et outils pratiques</p>
+                </div>
+                <div class="solution-card scroll-animate" style="--delay: 1;">
+                    <div class="solution-icon">💰</div>
+                    <h3>Facturation maîtrisée</h3>
+                    <p>Optimisez vos remboursements et évitez les erreurs coûteuses</p>
+                </div>
+                <div class="solution-card scroll-animate" style="--delay: 2;">
+                    <div class="solution-icon">💬</div>
+                    <h3>Communication fluide</h3>
+                    <p>Techniques pour proposer naturellement sans créer de friction</p>
+                </div>
+                <div class="solution-card scroll-animate" style="--delay: 3;">
+                    <div class="solution-icon">⏰</div>
+                    <h3>Organisation optimale</h3>
+                    <p>Intégrez les entretiens dans vos temps morts sans impact sur le flux</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Benefits Section -->
+    <section id="benefits" class="bg-light">
+        <div class="container">
+            <h2>Transformez votre pratique</h2>
+            <p class="section-subtitle">Des bénéfices concrets et mesurables dès le premier mois</p>
+            <div class="benefits-grid">
+                <div class="benefit-item scroll-animate">
+                    <div class="benefit-icon">✨</div>
+                    <div>
+                        <h3>Équipe valorisée</h3>
+                        <p>Vos collaborateurs deviennent de véritables conseillers santé, augmentant leur satisfaction au travail</p>
+                    </div>
+                </div>
+                <div class="benefit-item scroll-animate">
+                    <div class="benefit-icon">🤝</div>
+                    <div>
+                        <h3>Patients fidélisés</h3>
+                        <p>Un accompagnement personnalisé qui renforce la confiance et l'adhésion thérapeutique</p>
+                    </div>
+                </div>
+                <div class="benefit-item scroll-animate">
+                    <div class="benefit-icon">📈</div>
+                    <div>
+                        <h3>Revenus additionnels</h3>
+                        <p>Générez 2 000 à 5 000€ mensuels avec seulement 2h d'entretiens par jour</p>
+                    </div>
+                </div>
+                <div class="benefit-item scroll-animate">
+                    <div class="benefit-icon">⚡</div>
+                    <div>
+                        <h3>Mise en œuvre rapide</h3>
+                        <p>Système opérationnel en 2 semaines, sans perturber votre activité habituelle</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Case Study Section -->
+    <section id="case-study">
+        <div class="container">
+            <h2>Des résultats qui parlent</h2>
+            <p class="section-subtitle">L'histoire d'une transformation réussie</p>
+            <div class="case-study scroll-animate">
+                <h3>📍 Pharmacie Martin - Lyon (3 collaborateurs)</h3>
+                <div class="case-study-content">
+                    <div class="case-stat">
+                        <span class="number">0→50</span>
+                        <span class="label">Entretiens mensuels<br>atteints</span>
+                    </div>
+                    <div class="case-stat">
+                        <span class="number">+5 000€</span>
+                        <span class="label">Générés en<br>40 jours</span>
+                    </div>
+                    <div class="case-stat">
+                        <span class="number">+35%</span>
+                        <span class="label">Satisfaction patients<br>chroniques</span>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 2rem; font-size: 1.1rem; color: var(--text-gray);">
+                    "La formation nous a permis de structurer notre approche. Résultat : de zéro à 50 entretiens mensuels en quelques semaines."
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="bg-light">
+        <div class="container">
+            <h2>Ils ont transformé leur officine</h2>
+            <p class="section-subtitle">Découvrez l'impact de notre formation</p>
+            <div class="testimonials-container">
+                <div class="testimonial scroll-animate">
+                    <p class="testimonial-text">
+                        La formation a complètement changé notre approche. Les scripts fournis nous ont permis de proposer les entretiens naturellement. Nous réalisons maintenant 10 entretiens par semaine, sans stress et avec d'excellents retours patients.
+                    </p>
+                    <p class="testimonial-author">— Sophie L., Pharmacienne titulaire, Toulouse</p>
+                </div>
+                <div class="testimonial scroll-animate">
+                    <p class="testimonial-text">
+                        J'étais sceptique au début, mais les résultats sont là. Non seulement nous générons des revenus supplémentaires, mais nous avons aussi renforcé notre rôle de professionnel de santé. C'est gratifiant et rentable.
+                    </p>
+                    <p class="testimonial-author">— Julien M., Préparateur en pharmacie, Bordeaux</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Bonus Section -->
+    <section id="bonus">
+        <div class="container">
+            <h2>Un bonus exclusif qui fait la différence</h2>
+            <div class="bonus-box scroll-animate">
+                <h3>🎁 Accès privilégié à notre outil digital</h3>
+                <p>Les participants bénéficient d'une réduction exclusive sur notre plateforme numérique innovante</p>
+                <div class="bonus-features">
+                    <div class="bonus-feature">
+                        <strong>⚡ Automatisation</strong>
+                        <p>Gestion simplifiée des entretiens et rappels automatiques</p>
+                    </div>
+                    <div class="bonus-feature">
+                        <strong>📊 Analyse</strong>
+                        <p>Tableaux de bord et statistiques en temps réel</p>
+                    </div>
+                    <div class="bonus-feature">
+                        <strong>🚀 Performance x3</strong>
+                        <p>Triplez votre capacité d'entretiens sans effort supplémentaire</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Why Choose Section -->
+    <section id="why-choose" class="bg-light">
+        <div class="container">
+            <h2>Pourquoi nous faire confiance ?</h2>
+            <p class="section-subtitle">Une expertise terrain au service de votre réussite</p>
+            <div class="why-grid">
+                <div class="why-card scroll-animate">
+                    <div class="icon">🎯</div>
+                    <h3>Expérience terrain</h3>
+                    <p>5 ans de pratique quotidienne des nouvelles missions avec résultats prouvés</p>
+                </div>
+                <div class="why-card scroll-animate">
+                    <div class="icon">📈</div>
+                    <h3>ROI garanti</h3>
+                    <p>Rentabilisez votre investissement dès le premier mois d'application</p>
+                </div>
+                <div class="why-card scroll-animate">
+                    <div class="icon">🎓</div>
+                    <h3>Pédagogie active</h3>
+                    <p>Formation pratique avec cas réels, mises en situation et outils prêts à l'emploi</p>
+                </div>
+                <div class="why-card scroll-animate">
+                    <div class="icon">🔄</div>
+                    <h3>Effet multiplicateur</h3>
+                    <p>Chaque entretien génère de nouvelles opportunités de services rémunérés</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Final CTA Section -->
+    <section id="contact" class="cta-final">
+        <div class="container">
+            <h2>Prêt à transformer votre officine ?</h2>
+            <p>Ne laissez plus les nouvelles missions dormir dans vos tiroirs. Transformez-les en moteur de croissance durable.</p>
+            <p style="font-weight: 600; font-size: 1.3rem; color: var(--primary-blue);">Découvrez comment notre formation peut s'adapter à votre officine</p>
+            <a href="#" onclick="openModal(event)" class="cta-button cta-primary">
+                <span>Réserver ma présentation gratuite</span>
+                <span style="font-size: 1.2rem;">→</span>
+            </a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Innovapharm Formation - Expertise en nouvelles missions pharmaceutiques</p>
+        </div>
+    </footer>
+    
+    <!-- Modal de Contact -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            
+            <div class="modal-header">
+                <h2>Réservez votre présentation gratuite</h2>
+                <p>Remplissez ce formulaire pour être recontacté sous 24h</p>
+            </div>
+            
+            <form id="contactForm" onsubmit="handleSubmit(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="prenom">Prénom <span class="required">*</span></label>
+                        <input type="text" id="prenom" name="prenom" placeholder="Jean" required>
+                        <span class="error-message">Ce champ est requis</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="nom">Nom <span class="required">*</span></label>
+                        <input type="text" id="nom" name="nom" placeholder="Dupont" required>
+                        <span class="error-message">Ce champ est requis</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Adresse email <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" placeholder="jean.dupont@pharmacie.fr" required>
+                    <span class="error-message">Veuillez entrer une adresse email valide</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="telephone">Numéro de téléphone <span class="required">*</span></label>
+                    <input type="tel" id="telephone" name="telephone" placeholder="06 12 34 56 78" pattern="[0-9\s\+\-\(\)]+" required>
+                    <span class="error-message">Veuillez entrer un numéro de téléphone valide</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pharmacie">Nom de la pharmacie <span class="required">*</span></label>
+                    <input type="text" id="pharmacie" name="pharmacie" placeholder="Pharmacie du Centre" required>
+                    <span class="error-message">Ce champ est requis</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="adresse">Adresse de la pharmacie <span class="required">*</span></label>
+                    <textarea id="adresse" name="adresse" rows="3" placeholder="12 rue de la République&#10;75001 Paris" required></textarea>
+                    <span class="error-message">Ce champ est requis</span>
+                </div>
+                
+                <div class="form-group" style="margin-top: 1.5rem;">
+                    <label style="display: flex; align-items: flex-start; font-weight: normal; font-size: 0.9rem; cursor: pointer; padding: 10px; background: var(--bg-light); border-radius: 8px;">
+                        <input type="checkbox" id="rgpd" name="rgpd" required style="width: auto; min-width: 20px; height: 20px; margin-right: 10px; margin-top: 2px; cursor: pointer;">
+                        <span>J'accepte que mes données soient utilisées pour me recontacter dans le cadre de ma demande. Conformément au RGPD, vous disposez d'un droit d'accès, de modification et de suppression de vos données. <span class="required">*</span></span>
+                    </label>
+                    <span class="error-message" style="margin-left: 30px;">Veuillez accepter les conditions pour continuer</span>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel" onclick="closeModal()">Annuler</button>
+                    <button type="submit" class="btn-submit" id="submitBtn">
+                        <span id="submitText">Envoyer ma demande</span>
+                        <span class="loading" style="display: none;"></span>
+                    </button>
+                </div>
+            </form>
+            
+            <div class="success-message" id="successMessage">
+                <div class="success-icon">✅</div>
+                <h3>Votre demande a été envoyée avec succès !</h3>
+                <p>Nous vous recontacterons dans les plus brefs délais.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // ✅ Configuration EmailJS ACTIVE
+        const EMAILJS_SERVICE_ID = 'service_hdpj8as'; // Service configuré
+        const EMAILJS_TEMPLATE_ID = 'template_5bnq0eq'; // Template Contact Us
+        const EMAILJS_AUTOREPLY_ID = 'template_s7thipj'; // Template Auto-Reply
+        
+        // Configuration alternative (si EmailJS non utilisé)
+        const WEBHOOK_URL = 'YOUR_WEBHOOK_URL'; // Option webhook
+        const API_ENDPOINT = 'YOUR_API_ENDPOINT'; // Option API
+        
+        // Détection automatique du mode de fonctionnement
+        const isConfigured = () => {
+            return true; // EmailJS est maintenant configuré
+        };
+        
+        // Fonctions du Modal
+        function openModal(event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            const modal = document.getElementById('contactModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('contactModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            resetForm();
+        }
+        
+        function resetForm() {
+            const form = document.getElementById('contactForm');
+            const successMessage = document.getElementById('successMessage');
+            form.reset();
+            form.style.display = 'block';
+            successMessage.classList.remove('show');
+            clearErrors();
+        }
+        
+        function clearErrors() {
+            const inputs = document.querySelectorAll('.error');
+            const errorMessages = document.querySelectorAll('.error-message.show');
+            inputs.forEach(input => input.classList.remove('error'));
+            errorMessages.forEach(msg => msg.classList.remove('show'));
+        }
+        
+        function validateForm() {
+            let isValid = true;
+            clearErrors();
+            
+            // Validation de tous les champs requis
+            const requiredFields = document.querySelectorAll('#contactForm input[required], #contactForm textarea[required]');
+            requiredFields.forEach(field => {
+                if (field.type === 'checkbox') {
+                    if (!field.checked) {
+                        field.classList.add('error');
+                        const errorMsg = field.closest('.form-group').querySelector('.error-message');
+                        if (errorMsg) {
+                            errorMsg.classList.add('show');
+                        }
+                        isValid = false;
+                    }
+                } else if (!field.value.trim()) {
+                    field.classList.add('error');
+                    field.nextElementSibling.classList.add('show');
+                    isValid = false;
+                }
+            });
+            
+            // Validation email
+            const emailField = document.getElementById('email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailField.value && !emailRegex.test(emailField.value)) {
+                emailField.classList.add('error');
+                emailField.nextElementSibling.textContent = 'Veuillez entrer une adresse email valide';
+                emailField.nextElementSibling.classList.add('show');
+                isValid = false;
+            }
+            
+            // Validation téléphone (plus flexible)
+            const telField = document.getElementById('telephone');
+            if (telField.value && telField.value.length < 8) {
+                telField.classList.add('error');
+                telField.nextElementSibling.textContent = 'Numéro de téléphone trop court';
+                telField.nextElementSibling.classList.add('show');
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+        
+        async function handleSubmit(event) {
+            event.preventDefault();
+            
+            // Debug pour comprendre le problème
+            console.log('Tentative de soumission du formulaire...');
+            
+            if (!validateForm()) {
+                console.log('Validation échouée - vérifiez tous les champs');
+                // Faire défiler jusqu'au premier champ en erreur
+                const firstError = document.querySelector('.error');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+                return;
+            }
+            
+            console.log('Validation réussie - envoi en cours...');
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const submitText = document.getElementById('submitText');
+            const loading = submitBtn.querySelector('.loading');
+            
+            // Afficher le loader
+            submitBtn.disabled = true;
+            submitText.style.display = 'none';
+            loading.style.display = 'inline-block';
+            
+            // Récupérer les données du formulaire
+            const formData = {
+                prenom: document.getElementById('prenom').value,
+                nom: document.getElementById('nom').value,
+                email: document.getElementById('email').value,
+                telephone: document.getElementById('telephone').value,
+                pharmacie: document.getElementById('pharmacie').value,
+                adresse: document.getElementById('adresse').value,
+                rgpd: document.getElementById('rgpd').checked,
+                date: new Date().toLocaleString('fr-FR'),
+                source: window.location.href
+            };
+            
+            try {
+                // ✅ EmailJS est maintenant configuré et actif !
+                if (EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID') {
+                    // Envoi de l'email principal (notification pour vous)
+                    await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+                        ...formData,
+                        to_email: 'admindan@innovapharmconsulting.com', // Votre email professionnel
+                        reply_to: formData.email
+                    });
+                    
+                    // Envoi de l'auto-reply au prospect (si configuré)
+                    if (EMAILJS_AUTOREPLY_ID && EMAILJS_AUTOREPLY_ID !== 'YOUR_AUTOREPLY_ID') {
+                        try {
+                            await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_AUTOREPLY_ID, {
+                                ...formData,
+                                to_email: formData.email
+                            });
+                            console.log('✅ Auto-reply envoyé au prospect');
+                        } catch (autoReplyError) {
+                            console.log('ℹ️ Auto-reply non envoyé:', autoReplyError);
+                        }
+                    }
+                    
+                    console.log('✅ Email envoyé avec succès via EmailJS');
+                } 
+                // Option 2: Webhook (si configuré)
+                else if (WEBHOOK_URL !== 'YOUR_WEBHOOK_URL') {
+                    const response = await fetch(WEBHOOK_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+                    
+                    if (!response.ok) throw new Error('Erreur webhook');
+                    console.log('✅ Données envoyées au webhook');
+                }
+                // Option 3: API personnalisée (si configuré)
+                else if (API_ENDPOINT !== 'YOUR_API_ENDPOINT') {
+                    const response = await fetch(API_ENDPOINT, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(formData)
+                    });
+                    
+                    if (!response.ok) throw new Error('Erreur API');
+                    console.log('✅ Données envoyées à l\'API');
+                }
+                // Mode démonstration (stockage local uniquement)
+                else {
+                    let leads = JSON.parse(localStorage.getItem('pharmaLeads') || '[]');
+                    leads.push(formData);
+                    localStorage.setItem('pharmaLeads', JSON.stringify(leads));
+                    
+                    console.log('📧 Contact enregistré en local (mode démo)');
+                    console.log('💾 Total des contacts:', leads.length);
+                }
+                
+                // Simuler un délai minimum pour l'UX
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                
+                // Afficher le message de succès
+                const form = document.getElementById('contactForm');
+                const successMessage = document.getElementById('successMessage');
+                form.style.display = 'none';
+                successMessage.classList.add('show');
+                
+                // Fermer le modal après 3 secondes
+                setTimeout(() => {
+                    closeModal();
+                }, 3000);
+                
+            } catch (error) {
+                console.error('Erreur lors de l\'envoi:', error);
+                alert('Une erreur est survenue. Veuillez réessayer ou nous contacter directement.');
+            } finally {
+                // Réinitialiser le bouton
+                submitBtn.disabled = false;
+                submitText.style.display = 'inline';
+                loading.style.display = 'none';
+            }
+        }
+        
+        // Fermer le modal en cliquant en dehors
+        document.getElementById('contactModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+        
+        // Fermer le modal avec Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+        
+        // Fonction de debug pour tester le formulaire
+        function debugForm() {
+            console.log('=== DEBUG FORMULAIRE ===');
+            const form = document.getElementById('contactForm');
+            const inputs = form.querySelectorAll('input, textarea');
+            
+            inputs.forEach(input => {
+                if (input.type === 'checkbox') {
+                    console.log(`${input.name}: ${input.checked ? '✅ Coché' : '❌ Non coché'} ${input.required ? '(REQUIS)' : ''}`);
+                } else {
+                    console.log(`${input.name}: "${input.value}" ${input.value.trim() ? '✅' : '❌ Vide'} ${input.required ? '(REQUIS)' : ''}`);
+                }
+            });
+            
+            console.log('=================');
+            const isValid = validateForm();
+            console.log(`Formulaire valide : ${isValid ? '✅ OUI' : '❌ NON'}`);
+            
+            if (!isValid) {
+                console.log('Champs en erreur :');
+                document.querySelectorAll('.error').forEach(field => {
+                    console.log(`- ${field.name || field.id}`);
+                });
+            }
+        }
+        
+        // Ajouter un listener pour debug au chargement
+        document.addEventListener('DOMContentLoaded', function() {
+            // Rendre le debug accessible globalement
+            window.debugForm = debugForm;
+            
+            // Ajouter un message d'aide
+            const submitBtn = document.getElementById('submitBtn');
+            if (submitBtn) {
+                submitBtn.addEventListener('mouseenter', function() {
+                    if (this.disabled) {
+                        console.log('💡 Le bouton est désactivé. Tapez debugForm() dans la console pour voir les erreurs.');
+                    }
+                });
+            }
+        });
+        
+        // Fonction pour exporter les leads en CSV (mode démo)
+        function exportLeadsToCSV() {
+            const leads = JSON.parse(localStorage.getItem('pharmaLeads') || '[]');
+            if (leads.length === 0) {
+                alert('Aucun contact enregistré');
+                return;
+            }
+            
+            const csv = [
+                ['Prénom', 'Nom', 'Email', 'Téléphone', 'Pharmacie', 'Adresse', 'RGPD', 'Date', 'Source'],
+                ...leads.map(lead => [
+                    lead.prenom || '',
+                    lead.nom || '',
+                    lead.email || '',
+                    lead.telephone || '',
+                    lead.pharmacie || '',
+                    (lead.adresse || '').replace(/\n/g, ' '),
+                    lead.rgpd ? 'Accepté' : 'Non accepté',
+                    lead.date || '',
+                    lead.source || ''
+                ])
+            ].map(row => row.map(cell => `"${cell}"`).join(',')).join('\n');
+            
+            const blob = new Blob(['\ufeff' + csv], { type: 'text/csv;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `contacts_pharma_${new Date().toISOString().split('T')[0]}.csv`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            console.log(`✅ ${leads.length} contacts exportés en CSV`);
+        }
+        
+        // Message de configuration au chargement
+        window.addEventListener('load', function() {
+            if (EMAILJS_SERVICE_ID === 'service_hdpj8as') {
+                console.log('%c✅ EmailJS CONFIGURÉ ET ACTIF', 'color: green; font-size: 16px; font-weight: bold');
+                console.log('%cVotre formulaire est prêt à recevoir des demandes !', 'color: #00695C; font-size: 14px');
+                console.log('%cEmails envoyés à: admindan@innovapharmconsulting.com', 'color: #00695C');
+                console.log('%cAuto-reply activé pour les prospects', 'color: #00695C');
+                console.log('%c\nFonctions utiles disponibles:', 'color: #333; font-weight: bold');
+                console.log('%c• viewStoredLeads() - Voir les contacts sauvegardés localement', 'color: #666');
+                console.log('%c• exportLeadsToCSV() - Exporter les contacts en CSV', 'color: #666');
+            } else if (!isConfigured()) {
+                console.log('%c⚠️ CONFIGURATION REQUISE', 'color: orange; font-size: 16px; font-weight: bold');
+                console.log('%cLe formulaire fonctionne en mode démonstration.', 'color: #666');
+                console.log('%cPour activer l\'envoi des emails, configurez EmailJS', 'color: #666');
+            }
+        });
+        
+        // Prevent default link behavior for hash links
+        document.addEventListener('DOMContentLoaded', function() {
+            // Intercept all hash link clicks to prevent any popup
+            document.addEventListener('click', function(e) {
+                const link = e.target.closest('a[href^="#"]');
+                if (link && !link.hasAttribute('onclick')) {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    if (targetId && targetId !== '#') {
+                        const target = document.querySelector(targetId);
+                        if (target) {
+                            const offset = 80;
+                            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                            window.scrollTo({
+                                top: targetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                    return false;
+                }
+            });
+            
+            // Attacher l'événement à tous les boutons CTA existants et futurs
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('.cta-button') || e.target.closest('.btn-primary')) {
+                    const element = e.target.closest('.cta-button') || e.target.closest('.btn-primary');
+                    if (!element.hasAttribute('onclick')) {
+                        element.setAttribute('onclick', 'openModal(event)');
+                    }
+                }
+            });
+        });
+        
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+        
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        let lastScroll = 0;
+        
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+        
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // Counter animation for case study numbers
+        const animateCounter = (element, target) => {
+            const duration = 2000;
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    element.textContent = Math.floor(current).toLocaleString('fr-FR');
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target.toLocaleString('fr-FR');
+                }
+            };
+            
+            updateCounter();
+        };
+        
+        // Observe case study section for counter animation
+        const caseStudy = document.querySelector('.case-study');
+        const caseObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Animate the revenue counter (updated for 5000€)
+                    const revenueElement = document.querySelector('.case-stat:nth-child(2) .number');
+                    if (revenueElement && revenueElement.textContent.includes('5000')) {
+                        const span = document.createElement('span');
+                        span.textContent = '+';
+                        revenueElement.innerHTML = '';
+                        revenueElement.appendChild(span);
+                        animateCounter(revenueElement, 5000);
+                        setTimeout(() => {
+                            revenueElement.innerHTML = '+5 000€';
+                        }, 2000);
+                    }
+                    caseObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        if (caseStudy) {
+            caseObserver.observe(caseStudy);
+        }
+    </script>
+</body>
+</html>
