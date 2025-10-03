@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Innovapharm Formation - Nouvelles Missions du Pharmacien</title>
+    <title>Formation Pharmaciens – Innovapharm Consulting (Qualiopi, FIF-PL)</title>
+    <meta name="description" content="Formation pharmaciens certifiée Qualiopi, finançable FIF-PL. Nouvelles missions pharmaceutiques : bilans partagés, entretiens patients. +50 pharmaciens formés.">
+    <meta name="keywords" content="formation pharmacien, Qualiopi, FIF-PL, nouvelles missions pharmaceutiques, bilan partagé, entretien pharmaceutique">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- EmailJS pour l'envoi des formulaires -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
@@ -36,7 +38,22 @@
             --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
             --border-light: #E5E7EB;
         }
-        
+
+        /* Mode sombre */
+        [data-theme="dark"] {
+            --primary-blue: #1E4D7B;
+            --text-dark: #E5E7EB;
+            --text-gray: #9CA3AF;
+            --bg-white: #1F2937;
+            --bg-light: #111827;
+            --bg-gradient-start: #1E293B;
+            --bg-gradient-end: #0F172A;
+            --border-light: #374151;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.5);
+        }
+
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
@@ -45,6 +62,7 @@
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         
         .container {
@@ -141,7 +159,67 @@
             transition: 0.3s;
             border-radius: 2px;
         }
-        
+
+        /* Toggle Mode Sombre */
+        .theme-toggle {
+            background: var(--bg-light);
+            border: 2px solid var(--border-light);
+            border-radius: 50px;
+            width: 60px;
+            height: 30px;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: 20px;
+        }
+
+        .theme-toggle::before {
+            content: '☀️';
+            position: absolute;
+            left: 3px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            transition: opacity 0.3s ease;
+        }
+
+        .theme-toggle::after {
+            content: '';
+            position: absolute;
+            left: 3px;
+            top: 3px;
+            width: 20px;
+            height: 20px;
+            background: var(--turquoise);
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        [data-theme="dark"] .theme-toggle::before {
+            content: '🌙';
+            left: auto;
+            right: 3px;
+        }
+
+        [data-theme="dark"] .theme-toggle::after {
+            transform: translateX(30px);
+        }
+
+        .qualiopi-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.1s both;
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--bg-gradient-start) 0%, rgba(255,255,255,0.5) 50%, var(--bg-gradient-start) 100%);
@@ -262,8 +340,12 @@
         }
         
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(255, 107, 53, 0.35);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 40px rgba(255, 107, 53, 0.4);
+        }
+
+        .cta-button:active {
+            transform: translateY(-1px) scale(1.02);
         }
         
         .cta-button:hover::before {
@@ -325,28 +407,44 @@
         }
         
         .problem-list {
-            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
             margin: 2rem 0;
+            list-style: none;
         }
-        
+
         .problem-list li {
-            padding: 1rem 0 1rem 3rem;
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 12px;
             position: relative;
-            font-size: 1.05rem;
+            font-size: 1.15rem;
+            font-weight: 500;
             color: var(--text-dark);
-            border-bottom: 1px solid var(--border-light);
+            border: 2px solid var(--border-light);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            line-height: 1.6;
         }
-        
-        .problem-list li:last-child {
-            border-bottom: none;
+
+        .problem-list li:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            border-color: var(--coral);
+            background: var(--bg-white);
         }
-        
+
         .problem-list li::before {
             content: '⚠️';
-            position: absolute;
-            left: 0.5rem;
-            top: 1rem;
-            font-size: 1.2rem;
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .problem-list li:hover::before {
+            transform: scale(1.2) rotate(5deg);
         }
         
         /* Solution Section */
@@ -362,12 +460,13 @@
             padding: 2.5rem 2rem;
             border-radius: 16px;
             text-align: center;
-            border: 1px solid var(--border-light);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid var(--border-light);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             overflow: hidden;
+            cursor: pointer;
         }
-        
+
         .solution-card::before {
             content: '';
             position: absolute;
@@ -377,17 +476,34 @@
             height: 4px;
             background: linear-gradient(90deg, var(--turquoise), var(--coral));
             transform: scaleX(0);
-            transition: transform 0.3s ease;
+            transition: transform 0.4s ease;
         }
-        
+
+        .solution-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--turquoise), var(--emerald));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
         .solution-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
             border-color: var(--turquoise);
         }
-        
+
         .solution-card:hover::before {
             transform: scaleX(1);
+        }
+
+        .solution-card:hover::after {
+            opacity: 0.05;
         }
         
         .solution-icon {
@@ -396,6 +512,14 @@
             display: inline-block;
             animation: float 3s ease-in-out infinite;
             animation-delay: calc(var(--delay) * 0.2s);
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .solution-card:hover .solution-icon {
+            transform: scale(1.2) rotate(5deg);
+            animation-play-state: paused;
         }
         
         @keyframes float {
@@ -408,11 +532,20 @@
             color: var(--primary-blue);
             margin-bottom: 1rem;
             font-weight: 600;
+            position: relative;
+            z-index: 1;
+            transition: color 0.3s ease;
         }
-        
+
+        .solution-card:hover h3 {
+            color: var(--turquoise);
+        }
+
         .solution-card p {
             color: var(--text-gray);
             line-height: 1.6;
+            position: relative;
+            z-index: 1;
         }
         
         /* Benefits Section */
@@ -431,14 +564,32 @@
             background: var(--bg-white);
             border-radius: 16px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--border-light);
-            transition: all 0.3s ease;
+            border: 2px solid var(--border-light);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
         }
-        
+
+        .benefit-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(64, 224, 208, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
         .benefit-item:hover {
-            transform: translateX(10px);
-            box-shadow: var(--shadow-md);
+            transform: translateX(10px) scale(1.02);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
             border-color: var(--turquoise);
+        }
+
+        .benefit-item:hover::before {
+            left: 100%;
         }
         
         .benefit-icon {
@@ -448,6 +599,13 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             flex-shrink: 0;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .benefit-item:hover .benefit-icon {
+            transform: scale(1.2) rotate(10deg);
         }
         
         .benefit-item h3 {
@@ -455,10 +613,19 @@
             color: var(--primary-blue);
             margin-bottom: 0.5rem;
             font-weight: 600;
+            transition: color 0.3s ease;
+            position: relative;
+            z-index: 1;
         }
-        
+
+        .benefit-item:hover h3 {
+            color: var(--turquoise);
+        }
+
         .benefit-item p {
             color: var(--text-gray);
+            position: relative;
+            z-index: 1;
         }
         
         /* Case Study */
@@ -492,12 +659,15 @@
             background: var(--bg-white);
             border-radius: 16px;
             box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-light);
-            transition: transform 0.3s ease;
+            border: 2px solid var(--border-light);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
         }
-        
+
         .case-stat:hover {
-            transform: scale(1.05);
+            transform: scale(1.08) translateY(-5px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+            border-color: var(--turquoise);
         }
         
         .case-stat .number {
@@ -530,14 +700,33 @@
             padding: 2.5rem;
             border-radius: 20px;
             box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-light);
+            border: 2px solid var(--border-light);
             position: relative;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            overflow: hidden;
         }
-        
+
+        .testimonial::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--turquoise), var(--emerald));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
         .testimonial:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.15);
+            border-color: var(--turquoise);
+        }
+
+        .testimonial:hover::after {
+            transform: scaleX(1);
         }
         
         .testimonial::before {
@@ -737,6 +926,56 @@
             z-index: 1;
         }
         
+        /* Carousel Case Studies */
+        .carousel-container {
+            position: relative;
+            margin-top: 2rem;
+            min-height: 400px;
+        }
+
+        .carousel-track {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            flex-shrink: 0;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+
+        .carousel-slide.active {
+            opacity: 1;
+            position: relative;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 2rem;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--border-light);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: var(--turquoise);
+            transform: scale(1.3);
+        }
+
         /* Footer */
         footer {
             background: var(--primary-blue);
@@ -978,7 +1217,260 @@
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
-        
+
+        /* Stats Section */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, var(--turquoise), var(--emerald));
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.2));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 1rem;
+            display: block;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-card:hover .stat-number {
+            transform: scale(1.1);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 900px;
+            margin: 3rem auto 0;
+        }
+
+        .faq-item {
+            background: var(--bg-white);
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .faq-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--turquoise), var(--emerald));
+            transform: scaleY(0);
+            transition: transform 0.4s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+            border-color: var(--turquoise);
+            transform: translateX(5px);
+        }
+
+        .faq-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .faq-item.active {
+            border-color: var(--turquoise);
+            box-shadow: 0 8px 24px rgba(64, 224, 208, 0.2);
+        }
+
+        .faq-item.active::before {
+            transform: scaleY(1);
+        }
+
+        .faq-question {
+            width: 100%;
+            padding: 1.5rem 2rem;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: var(--turquoise);
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            font-weight: 400;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        .faq-answer-content {
+            padding: 0 2rem 1.5rem 2rem;
+            color: var(--text-gray);
+            line-height: 1.8;
+        }
+
+        /* Testimonial Photos */
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-photo {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+            border: 3px solid var(--turquoise);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .testimonial:hover .testimonial-photo {
+            transform: scale(1.1) rotate(5deg);
+            border-color: var(--emerald);
+        }
+
+        .testimonial-photo-placeholder {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--turquoise), var(--emerald));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .testimonial-info {
+            flex: 1;
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            color: var(--primary-blue);
+            font-size: 1.05rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .testimonial-role {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Image Optimization - Lazy Loading */
+        img[loading="lazy"] {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        img[loading="lazy"].loaded {
+            opacity: 1;
+        }
+
+        /* WebP Support */
+        .webp-image {
+            background-size: cover;
+            background-position: center;
+        }
+
+        /* Accessibilité - Navigation au clavier */
+        body.keyboard-navigation *:focus {
+            outline: 3px solid var(--turquoise);
+            outline-offset: 2px;
+        }
+
+        body:not(.keyboard-navigation) *:focus {
+            outline: none;
+        }
+
+        /* Skip to main content (accessibilité) */
+        .skip-to-main {
+            position: absolute;
+            top: -100px;
+            left: 0;
+            background: var(--turquoise);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            z-index: 10000;
+            border-radius: 0 0 8px 0;
+        }
+
+        .skip-to-main:focus {
+            top: 0;
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
             .nav-links {
@@ -1037,10 +1529,97 @@
             transform: translateY(0);
         }
     </style>
+
+    <!-- SEO: JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quel est le coût de la formation ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Le tarif varie selon le programme choisi. Nos formations sont entièrement finançables par le FIF-PL (Fonds Interprofessionnel de Formation des Professionnels Libéraux), ce qui signifie que vous pouvez bénéficier d'une prise en charge totale ou partielle sans débourser de votre poche."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment fonctionne le financement FIF-PL ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Le FIF-PL est un dispositif de financement destiné aux professionnels libéraux. Après votre inscription, nous vous accompagnons dans les démarches administratives. Vous devez simplement faire une demande de prise en charge avant le début de la formation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quelle est la durée de la formation ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "La formation complète dure 56 heures, réparties en 4 blocs OPCO : Démarche Qualité (7h), Actualisation Métier (28h), Législation (7h) et Santé Numérique (14h). Les modules sont flexibles et peuvent être suivis en présentiel ou distanciel selon vos disponibilités."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "La formation est-elle 100% en ligne ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, notre formation est entièrement accessible en ligne via la plateforme Digiforma. Vous pouvez suivre les modules à votre rythme, depuis votre ordinateur, tablette ou smartphone."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment accéder à la plateforme Digiforma ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dès votre inscription validée, vous recevrez vos identifiants de connexion par email. La plateforme Digiforma est intuitive et accessible 24h/24."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Une attestation est-elle délivrée à l'issue de la formation ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Oui, une attestation de formation certifiée Qualiopi vous sera remise à l'issue du parcours. Cette attestation valide vos compétences acquises et peut être présentée dans le cadre de votre développement professionnel continu (DPC)."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Course",
+      "name": "Formation Complète Pharmacien - 56 heures",
+      "description": "Formation certifiée Qualiopi de 56h pour pharmaciens : 4 blocs OPCO couvrant la démarche qualité, les entretiens pharmaceutiques (femme enceinte, opioïdes, asthme, AVK, AOD), la législation et la santé numérique. Présentiel ou distanciel, finançable OPCO.",
+      "provider": {
+        "@type": "Organization",
+        "name": "Innovapharm Consulting",
+        "sameAs": "https://innovapharmconsulting.com"
+      },
+      "courseMode": ["onsite", "online"],
+      "educationalCredentialAwarded": "Attestation Qualiopi",
+      "offers": {
+        "@type": "Offer",
+        "category": "Finançable OPCO",
+        "availability": "https://schema.org/InStock"
+      },
+      "hasCourseInstance": {
+        "@type": "CourseInstance",
+        "courseMode": ["onsite", "online"],
+        "courseWorkload": "PT56H"
+      }
+    }
+    </script>
 </head>
 <body>
+    <!-- Accessibilité: Skip to main content -->
+    <a href="#hero" class="skip-to-main">Aller au contenu principal</a>
+
     <!-- Navigation -->
-    <nav id="navbar">
+    <nav id="navbar" role="navigation" aria-label="Navigation principale">
         <div class="container">
             <div class="logo">
                 <span class="innovapharm">Innovapharm</span>
@@ -1053,30 +1632,165 @@
                 <li><a href="#benefits">Bénéfices</a></li>
                 <li><a href="#case-study">Résultats</a></li>
                 <li><a href="#testimonials">Témoignages</a></li>
+                <li><a href="#faq">FAQ</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <div class="menu-toggle" id="menuToggle">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <div class="theme-toggle" id="themeToggle" aria-label="Activer/désactiver le mode sombre" role="button" tabindex="0"></div>
+                <div class="menu-toggle" id="menuToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>
     
     <!-- Hero Section -->
-    <section class="hero" id="hero">
+    <main>
+    <section class="hero" id="hero" role="banner">
         <div class="container hero-content">
-            <h1><span class="emoji">🚀</span>Donnez un nouvel élan à votre officine grâce aux nouvelles missions du pharmacien</h1>
-            <p class="subtitle">Transformez les contraintes réglementaires en opportunités de croissance. Notre formation vous guide pas à pas vers une pratique moderne et rentable.</p>
-            <a href="#" onclick="openModal(event)" class="cta-button">
-                <span>Réservez une présentation gratuite</span>
+            <div class="qualiopi-badge">
+                <span>🏆</span>
+                <span>Certifié Qualiopi</span>
+            </div>
+            <h1>Formations Pharmaciens Finançables et Certifiées Qualiopi</h1>
+            <p class="subtitle">Développez les nouvelles missions pharmaceutiques dans votre officine. Formation 100% Digiforma, finançable FIF-PL. Transformez votre pratique en revenus additionnels.</p>
+            <a href="#programmes" class="cta-button cta-primary" aria-label="Découvrir nos programmes de formation">
+                <span>Découvrir les programmes</span>
                 <span style="font-size: 1.2rem;">→</span>
             </a>
         </div>
     </section>
     
+    <!-- Stats Section -->
+    <section id="stats" class="bg-light">
+        <div class="container">
+            <h2>Ils nous font confiance</h2>
+            <p class="section-subtitle">Des résultats concrets qui témoignent de notre expertise</p>
+            <div class="stats-grid">
+                <div class="stat-card scroll-animate">
+                    <span class="stat-number">+50</span>
+                    <span class="stat-label">Pharmaciens formés</span>
+                </div>
+                <div class="stat-card scroll-animate">
+                    <span class="stat-number">95%</span>
+                    <span class="stat-label">Taux de satisfaction</span>
+                </div>
+                <div class="stat-card scroll-animate">
+                    <span class="stat-number">+2400€*</span>
+                    <span class="stat-label">Revenus mensuels générés par apprenant</span>
+                </div>
+                <div class="stat-card scroll-animate">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Finançable OPCO</span>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 2rem; font-size: 0.9rem; color: var(--text-gray);">
+                * En consacrant 2 heures par jour aux nouvelles missions pharmaceutiques
+            </p>
+        </div>
+    </section>
+
+    <!-- Programmes Section -->
+    <section id="programmes" class="bg-light">
+        <div class="container">
+            <h2>Programme de Formation Complet</h2>
+            <p class="section-subtitle">56 heures certifiées Qualiopi, finançables OPCO - Réparties en 4 blocs</p>
+            <div class="solution-grid">
+                <div class="solution-card scroll-animate" style="--delay: 0;">
+                    <div class="solution-icon">🎯</div>
+                    <h3>Bloc 1 : Démarche Qualité</h3>
+                    <p><strong>7 heures</strong> - Initiation à la démarche qualité de l'officine : cartographie processus, SOP, traçabilité, indicateurs PDCA.</p>
+                </div>
+                <div class="solution-card scroll-animate" style="--delay: 1;">
+                    <div class="solution-icon">💊</div>
+                    <h3>Bloc 2 : Actualisation Métier</h3>
+                    <p><strong>28 heures</strong> - Entretiens : Femme enceinte, Opioïdes, Asthme, AVK, AOD. Cas pratiques, jeux de rôle, techniques d'inhalation.</p>
+                </div>
+                <div class="solution-card scroll-animate" style="--delay: 2;">
+                    <div class="solution-icon">⚖️</div>
+                    <h3>Bloc 3 : Législation</h3>
+                    <p><strong>7 heures</strong> - Facturation, éligibilité, RGPD, traçabilité DP/DMP, coordination MSS, conformité réglementaire complète.</p>
+                </div>
+                <div class="solution-card scroll-animate" style="--delay: 3;">
+                    <div class="solution-icon">💻</div>
+                    <h3>Bloc 4 : Santé Numérique</h3>
+                    <p><strong>14 heures</strong> - Digitalisation avec PharmaConsult : automatisation entretiens, indicateurs, bilan de prévention, déploiement.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <p style="font-size: 1.2rem; font-weight: 600; color: var(--primary-blue); margin-bottom: 1.5rem;">
+                    🎓 Formation complète de 56 heures - Présentiel ou Distanciel
+                </p>
+                <a href="#contact" class="cta-button cta-primary" aria-label="Demander le programme détaillé">
+                    <span>Télécharger le programme complet</span>
+                    <span style="font-size: 1.2rem;">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Section -->
+    <section id="quality">
+        <div class="container">
+            <h2>Une expérience de formation d'exception</h2>
+            <p class="section-subtitle">Design moderne, contenus interactifs et pédagogie innovante</p>
+            <div class="benefits-grid">
+                <div class="benefit-item scroll-animate">
+                    <div class="benefit-icon">🎨</div>
+                    <div>
+                        <h3>Design Ultra-Moderne</h3>
+                        <p>Interface élégante et intuitive avec un design soigné pour une expérience d'apprentissage optimale. Cours visuellement captivants et ergonomiques.</p>
+                    </div>
+                </div>
+                <div class="benefit-item scroll-animate">
+                    <div class="benefit-icon">✅</div>
+                    <div>
+                        <h3>QCM Interactifs</h3>
+                        <p>Évaluez vos connaissances en temps réel avec des quiz interactifs après chaque module. Feedback immédiat et corrections détaillées.</p>
+                    </div>
+                </div>
+                <div class="benefit-item scroll-animate">
+                    <div class="benefit-icon">🎥</div>
+                    <div>
+                        <h3>Cours Vidéo HD</h3>
+                        <p>Vidéos professionnelles en haute définition avec démonstrations pratiques, cas réels et interviews d'experts. Apprentissage visuel et immersif.</p>
+                    </div>
+                </div>
+                <div class="benefit-item scroll-animate">
+                    <div class="benefit-icon">🎧</div>
+                    <div>
+                        <h3>Podcasts Exclusifs</h3>
+                        <p>Écoutez vos cours en déplacement ! Podcasts professionnels téléchargeables pour réviser dans les transports ou pendant vos pauses.</p>
+                    </div>
+                </div>
+                <div class="benefit-item scroll-animate">
+                    <div class="benefit-icon">💡</div>
+                    <div>
+                        <h3>Conseils d'Optimisation</h3>
+                        <p>Tips exclusifs, astuces terrain et bonnes pratiques pour maximiser votre ROI. Playbooks et scripts prêts à l'emploi.</p>
+                    </div>
+                </div>
+                <div class="benefit-item scroll-animate">
+                    <div class="benefit-icon">🎁</div>
+                    <div>
+                        <h3>Bonus & Surprises</h3>
+                        <p>Accès à des ressources exclusives, templates téléchargeables, communauté privée et mises à jour régulières des contenus.</p>
+                    </div>
+                </div>
+            </div>
+            <div style="background: linear-gradient(135deg, #E6F4FF, #FFF); padding: 3rem; border-radius: 20px; margin-top: 3rem; text-align: center; box-shadow: var(--shadow-lg);">
+                <h3 style="color: var(--primary-blue); font-size: 1.8rem; margin-bottom: 1rem;">🏆 Qualité Premium Certifiée Qualiopi</h3>
+                <p style="font-size: 1.2rem; color: var(--text-dark); line-height: 1.8; max-width: 800px; margin: 0 auto;">
+                    Notre plateforme Digiforma offre une expérience d'apprentissage <strong>ultra-moderne et interactive</strong>. Chaque module est conçu avec soin pour garantir une progression efficace : <strong>vidéos HD, QCM interactifs, podcasts, cas pratiques</strong> et bien plus encore. Une formation qui allie <strong>esthétique, innovation et résultats</strong>.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Problem Section -->
-    <section id="problem" class="bg-light">
+    <section id="problem">
         <div class="container">
             <h2>Les défis actuels des officines</h2>
             <p class="section-subtitle">Des opportunités inexploitées qui impactent votre rentabilité</p>
@@ -1099,7 +1813,7 @@
     <section id="solution">
         <div class="container">
             <h2>Une formation qui change la donne</h2>
-            <p class="section-subtitle">Méthodologie éprouvée pour intégrer les nouvelles missions sans effort</p>
+            <p class="section-subtitle">56 heures de contenu premium avec méthodologie éprouvée et outils interactifs</p>
             <div class="solution-grid">
                 <div class="solution-card scroll-animate" style="--delay: 0;">
                     <div class="solution-icon">📋</div>
@@ -1160,33 +1874,101 @@
                     </div>
                 </div>
             </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#" onclick="openModal(event)" class="cta-button" aria-label="Commencer votre formation">
+                    <span>Commencer ma formation</span>
+                    <span style="font-size: 1.2rem;">→</span>
+                </a>
+            </div>
         </div>
     </section>
-    
+
     <!-- Case Study Section -->
     <section id="case-study">
         <div class="container">
             <h2>Des résultats qui parlent</h2>
-            <p class="section-subtitle">L'histoire d'une transformation réussie</p>
-            <div class="case-study scroll-animate">
-                <h3>📍 Pharmacie Martin - Lyon (3 collaborateurs)</h3>
-                <div class="case-study-content">
-                    <div class="case-stat">
-                        <span class="number">0→50</span>
-                        <span class="label">Entretiens mensuels<br>atteints</span>
+            <p class="section-subtitle">Découvrez comment nos pharmaciens transforment leur activité</p>
+
+            <div class="carousel-container">
+                <div class="carousel-track" id="carouselTrack">
+                    <!-- Slide 1 -->
+                    <div class="carousel-slide active">
+                        <div class="case-study scroll-animate">
+                            <h3>📍 Pharmacie Martin - Lyon (3 collaborateurs)</h3>
+                            <div class="case-study-content">
+                                <div class="case-stat">
+                                    <span class="number">0→50</span>
+                                    <span class="label">Entretiens mensuels<br>atteints</span>
+                                </div>
+                                <div class="case-stat">
+                                    <span class="number">+5 000€</span>
+                                    <span class="label">Générés en<br>40 jours</span>
+                                </div>
+                                <div class="case-stat">
+                                    <span class="number">+35%</span>
+                                    <span class="label">Satisfaction patients<br>chroniques</span>
+                                </div>
+                            </div>
+                            <p style="text-align: center; margin-top: 2rem; font-size: 1.1rem; color: var(--text-gray);">
+                                "La formation nous a permis de structurer notre approche. Résultat : de zéro à 50 entretiens mensuels en quelques semaines."
+                            </p>
+                        </div>
                     </div>
-                    <div class="case-stat">
-                        <span class="number">+5 000€</span>
-                        <span class="label">Générés en<br>40 jours</span>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-slide">
+                        <div class="case-study scroll-animate">
+                            <h3>📍 Pharmacie Santé Plus - Essonne (91)</h3>
+                            <div class="case-study-content">
+                                <div class="case-stat">
+                                    <span class="number">+2 000€</span>
+                                    <span class="label">Revenus nets<br>mensuels</span>
+                                </div>
+                                <div class="case-stat">
+                                    <span class="number">⭐⭐⭐⭐⭐</span>
+                                    <span class="label">Retours patients<br>exceptionnels</span>
+                                </div>
+                                <div class="case-stat">
+                                    <span class="number">+40%</span>
+                                    <span class="label">Fidélisation<br>clientèle</span>
+                                </div>
+                            </div>
+                            <p style="text-align: center; margin-top: 2rem; font-size: 1.1rem; color: var(--text-gray);">
+                                "Une formation ultra-complète qui a transformé notre manière de travailler. Les patients sont ravis et notre chiffre d'affaires a bondi !"
+                            </p>
+                        </div>
                     </div>
-                    <div class="case-stat">
-                        <span class="number">+35%</span>
-                        <span class="label">Satisfaction patients<br>chroniques</span>
+
+                    <!-- Slide 3 -->
+                    <div class="carousel-slide">
+                        <div class="case-study scroll-animate">
+                            <h3>📍 Pharmacie du Centre - Hauts-de-Seine (92)</h3>
+                            <div class="case-study-content">
+                                <div class="case-stat">
+                                    <span class="number">0→35</span>
+                                    <span class="label">Entretiens mensuels<br>en 2 mois</span>
+                                </div>
+                                <div class="case-stat">
+                                    <span class="number">💪</span>
+                                    <span class="label">Équipe motivée<br>et engagée</span>
+                                </div>
+                                <div class="case-stat">
+                                    <span class="number">+50%</span>
+                                    <span class="label">Patientèle<br>fidélisée</span>
+                                </div>
+                            </div>
+                            <p style="text-align: center; margin-top: 2rem; font-size: 1.1rem; color: var(--text-gray);">
+                                "Une formation qui fédère toute l'équipe ! De 0 à 35 entretiens par mois, avec une patientèle conquise et des collaborateurs ultra-motivés."
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <p style="text-align: center; margin-top: 2rem; font-size: 1.1rem; color: var(--text-gray);">
-                    "La formation nous a permis de structurer notre approche. Résultat : de zéro à 50 entretiens mensuels en quelques semaines."
-                </p>
+
+                <div class="carousel-dots">
+                    <span class="carousel-dot active" onclick="goToSlide(0)"></span>
+                    <span class="carousel-dot" onclick="goToSlide(1)"></span>
+                    <span class="carousel-dot" onclick="goToSlide(2)"></span>
+                </div>
             </div>
         </div>
     </section>
@@ -1198,16 +1980,49 @@
             <p class="section-subtitle">Découvrez l'impact de notre formation</p>
             <div class="testimonials-container">
                 <div class="testimonial scroll-animate">
+                    <div class="testimonial-header">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=120&h=120&fit=crop&crop=faces"
+                             alt="Dr Sophie Laurent"
+                             class="testimonial-photo"
+                             loading="lazy">
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Dr Sophie Laurent</div>
+                            <div class="testimonial-role">Pharmacienne titulaire, Toulouse</div>
+                        </div>
+                    </div>
                     <p class="testimonial-text">
-                        La formation a complètement changé notre approche. Les scripts fournis nous ont permis de proposer les entretiens naturellement. Nous réalisons maintenant 10 entretiens par semaine, sans stress et avec d'excellents retours patients.
+                        Formation de 56h exceptionnelle ! La partie démarche qualité m'a permis de structurer tous mes processus. Les 4 blocs sont complémentaires et directement applicables. Nous réalisons maintenant 50 entretiens par mois avec une traçabilité parfaite.
                     </p>
-                    <p class="testimonial-author">— Sophie L., Pharmacienne titulaire, Toulouse</p>
                 </div>
                 <div class="testimonial scroll-animate">
+                    <div class="testimonial-header">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=120&h=120&fit=crop&crop=faces"
+                             alt="Dr Marc Dubois"
+                             class="testimonial-photo"
+                             loading="lazy">
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Dr Marc Dubois</div>
+                            <div class="testimonial-role">Pharmacien titulaire, Lyon</div>
+                        </div>
+                    </div>
                     <p class="testimonial-text">
-                        J'étais sceptique au début, mais les résultats sont là. Non seulement nous générons des revenus supplémentaires, mais nous avons aussi renforcé notre rôle de professionnel de santé. C'est gratifiant et rentable.
+                        Le programme complet sur 56h couvre absolument tout : de la législation aux entretiens pharmaceutiques en passant par le digital. L'outil PharmaConsult est un vrai game-changer. ROI atteint en 2 mois avec +5000€ de revenus mensuels récurrents.
                     </p>
-                    <p class="testimonial-author">— Julien M., Préparateur en pharmacie, Bordeaux</p>
+                </div>
+                <div class="testimonial scroll-animate">
+                    <div class="testimonial-header">
+                        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=120&h=120&fit=crop&crop=faces"
+                             alt="Dr Caroline Martin"
+                             class="testimonial-photo"
+                             loading="lazy">
+                        <div class="testimonial-info">
+                            <div class="testimonial-name">Dr Caroline Martin</div>
+                            <div class="testimonial-role">Pharmacienne titulaire, Paris</div>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">
+                        Les 28h d'actualisation clinique (femme enceinte, opioïdes, asthme, AVK, AOD) sont d'une qualité remarquable. Cas pratiques, jeux de rôle, tout est prévu. La digitalisation via PharmaConsult nous fait gagner un temps précieux.
+                    </p>
                 </div>
             </div>
         </div>
@@ -1268,21 +2083,107 @@
         </div>
     </section>
     
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <h2>Questions fréquentes</h2>
+            <p class="section-subtitle">Tout ce que vous devez savoir sur nos formations</p>
+            <div class="faq-container">
+                <div class="faq-item scroll-animate">
+                    <button class="faq-question" aria-expanded="false">
+                        Quel est le coût de la formation ?
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Le tarif varie selon le programme choisi. Nos formations sont entièrement finançables par le FIF-PL (Fonds Interprofessionnel de Formation des Professionnels Libéraux), ce qui signifie que vous pouvez bénéficier d'une prise en charge totale ou partielle sans débourser de votre poche.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item scroll-animate">
+                    <button class="faq-question" aria-expanded="false">
+                        Comment fonctionne le financement FIF-PL ?
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Le FIF-PL est un dispositif de financement destiné aux professionnels libéraux. Après votre inscription, nous vous accompagnons dans les démarches administratives. Vous devez simplement faire une demande de prise en charge avant le début de la formation. Le remboursement intervient généralement sous 2 à 3 mois après la fin de la formation.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item scroll-animate">
+                    <button class="faq-question" aria-expanded="false">
+                        Quelle est la durée de la formation ?
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            La formation complète dure <strong>56 heures</strong>, réparties en 4 blocs OPCO : Démarche Qualité (7h), Actualisation Métier (28h), Législation (7h) et Santé Numérique (14h). Les modules sont flexibles et peuvent être suivis en présentiel ou distanciel selon vos disponibilités.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item scroll-animate">
+                    <button class="faq-question" aria-expanded="false">
+                        La formation est-elle 100% en ligne ?
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Oui, notre formation est entièrement accessible en ligne via la plateforme Digiforma. Vous pouvez suivre les modules à votre rythme, depuis votre ordinateur, tablette ou smartphone. Des sessions de questions-réponses en visioconférence sont également proposées pour un accompagnement personnalisé.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item scroll-animate">
+                    <button class="faq-question" aria-expanded="false">
+                        Comment accéder à la plateforme Digiforma ?
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Dès votre inscription validée, vous recevrez vos identifiants de connexion par email. La plateforme Digiforma est intuitive et accessible 24h/24. Vous y trouverez tous les supports de cours, vidéos, exercices pratiques et outils téléchargeables.
+                        </div>
+                    </div>
+                </div>
+                <div class="faq-item scroll-animate">
+                    <button class="faq-question" aria-expanded="false">
+                        Une attestation est-elle délivrée à l'issue de la formation ?
+                    </button>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            Oui, une attestation de formation certifiée Qualiopi vous sera remise à l'issue du parcours. Cette attestation valide vos compétences acquises et peut être présentée dans le cadre de votre développement professionnel continu (DPC).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Final CTA Section -->
     <section id="contact" class="cta-final">
         <div class="container">
             <h2>Prêt à transformer votre officine ?</h2>
             <p>Ne laissez plus les nouvelles missions dormir dans vos tiroirs. Transformez-les en moteur de croissance durable.</p>
-            <p style="font-weight: 600; font-size: 1.3rem; color: var(--primary-blue);">Découvrez comment notre formation peut s'adapter à votre officine</p>
-            <a href="#" onclick="openModal(event)" class="cta-button cta-primary">
-                <span>Réserver ma présentation gratuite</span>
-                <span style="font-size: 1.2rem;">→</span>
-            </a>
+            <p style="font-weight: 600; font-size: 1.3rem; color: var(--primary-blue); margin-bottom: 2rem;">Formation complète de 56 heures - Démarquez-vous avec notre programme certifié Qualiopi</p>
+
+            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; position: relative; z-index: 2;">
+                <a href="https://calendly.com/danamzallag4/30min"
+                   target="_blank"
+                   class="cta-button"
+                   aria-label="Réserver un RDV vidéo via Calendly"
+                   style="background: linear-gradient(135deg, var(--emerald), var(--turquoise));">
+                    <span>📅 Réserver un RDV vidéo</span>
+                    <span style="font-size: 1.2rem;">→</span>
+                </a>
+                <a href="#" onclick="openModal(event)" class="cta-button cta-primary">
+                    <span>✉️ Demander le programme détaillé</span>
+                    <span style="font-size: 1.2rem;">→</span>
+                </a>
+            </div>
+
+            <p style="margin-top: 2rem; opacity: 0.9; position: relative; z-index: 2;">
+                ⏱️ RDV vidéo de 30 min pour découvrir le programme de 56h et répondre à toutes vos questions
+            </p>
         </div>
     </section>
-    
+    </main>
+
     <!-- Footer -->
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <p>&copy; 2024 Innovapharm Formation - Expertise en nouvelles missions pharmaceutiques</p>
         </div>
@@ -1810,6 +2711,116 @@
         if (caseStudy) {
             caseObserver.observe(caseStudy);
         }
+
+        // Theme Toggle (Dark Mode)
+        const themeToggle = document.getElementById('themeToggle');
+        const currentTheme = localStorage.getItem('theme') || 'light';
+
+        if (currentTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+
+        themeToggle.addEventListener('click', function() {
+            const theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // Accessibilité: Support clavier pour le toggle
+        themeToggle.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                themeToggle.click();
+            }
+        });
+
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const faqItem = button.parentElement;
+                const isActive = faqItem.classList.contains('active');
+
+                // Fermer tous les autres items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                    item.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+                });
+
+                // Toggle l'item actuel
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                    button.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+
+        // Lazy Loading Images
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                        }
+                        if (img.dataset.srcset) {
+                            img.srcset = img.dataset.srcset;
+                        }
+                        img.classList.add('loaded');
+                        observer.unobserve(img);
+                    }
+                });
+            });
+
+            document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+
+        // Amélioration de l'accessibilité
+        // Focus visible pour navigation au clavier
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+
+        document.addEventListener('mousedown', function() {
+            document.body.classList.remove('keyboard-navigation');
+        });
+
+        // Carousel functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const totalSlides = slides.length;
+
+        function goToSlide(index) {
+            // Hide all slides
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            // Show selected slide
+            currentSlide = index;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            const next = (currentSlide + 1) % totalSlides;
+            goToSlide(next);
+        }
+
+        // Auto-advance carousel every 5 seconds
+        setInterval(nextSlide, 5000);
+
+        // Initialize first slide
+        goToSlide(0);
     </script>
 </body>
 </html>
