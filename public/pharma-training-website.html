@@ -436,17 +436,101 @@
         }
 
         .problem-list li::before {
-            content: '⚠️';
-            font-size: 2rem;
-            display: block;
-            margin-bottom: 1rem;
-            transition: transform 0.3s ease;
+            content: '';
+            display: none;
         }
 
         .problem-list li:hover::before {
-            transform: scale(1.2) rotate(5deg);
+            transform: none;
         }
-        
+
+        .problem-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 12px 12px 0 0;
+            margin: -2rem -2rem 1.5rem -2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .problem-list li:hover .problem-image {
+            transform: scale(1.05);
+        }
+
+        /* Video Presentation Section */
+        .video-presentation {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-presentation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0,174,239,0.1) 0%, transparent 70%);
+            animation: pulse 10s ease-in-out infinite;
+        }
+
+        .video-presentation .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .video-presentation h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .video-presentation .section-subtitle {
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 3rem;
+        }
+
+        .video-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #000;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            position: relative;
+            aspect-ratio: 16 / 9;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0A2342 0%, #1a3a5f 100%);
+            color: white;
+        }
+
+        .video-placeholder-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+
+        .video-placeholder-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-placeholder-subtext {
+            font-size: 1rem;
+            opacity: 0.7;
+        }
+
         /* Solution Section */
         .solution-grid {
             display: grid;
@@ -1628,11 +1712,11 @@
             <ul class="nav-links" id="navLinks">
                 <li><a href="#hero">Accueil</a></li>
                 <li><a href="#problem">Défis</a></li>
-                <li><a href="#solution">Solution</a></li>
+                <li><a href="#video">Présentation</a></li>
                 <li><a href="#benefits">Bénéfices</a></li>
+                <li><a href="#programmes">Programme</a></li>
                 <li><a href="#case-study">Résultats</a></li>
                 <li><a href="#testimonials">Témoignages</a></li>
-                <li><a href="#faq">FAQ</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div style="display: flex; align-items: center; gap: 10px;">
@@ -1663,75 +1747,127 @@
         </div>
     </section>
     
-    <!-- Stats Section -->
-    <section id="stats" class="bg-light">
+    <!-- Problem Section - NOUVELLE POSITION #1 -->
+    <section id="problem">
         <div class="container">
-            <h2>Ils nous font confiance</h2>
-            <p class="section-subtitle">Des résultats concrets qui témoignent de notre expertise</p>
-            <div class="stats-grid">
-                <div class="stat-card scroll-animate">
-                    <span class="stat-number">+50</span>
-                    <span class="stat-label">Pharmaciens formés</span>
-                </div>
-                <div class="stat-card scroll-animate">
-                    <span class="stat-number">95%</span>
-                    <span class="stat-label">Taux de satisfaction</span>
-                </div>
-                <div class="stat-card scroll-animate">
-                    <span class="stat-number">+2400€*</span>
-                    <span class="stat-label">Revenus mensuels générés par apprenant</span>
-                </div>
-                <div class="stat-card scroll-animate">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">Finançable OPCO</span>
-                </div>
+            <h2>Les défis actuels des officines</h2>
+            <p class="section-subtitle">Des opportunités inexploitées qui impactent votre rentabilité</p>
+            <div class="problem-card scroll-animate">
+                <p style="font-size: 1.1rem; margin-bottom: 2rem;">Les nouvelles missions pharmaceutiques représentent un potentiel de croissance exceptionnel... Pourtant, 80% des officines peinent à les mettre en œuvre efficacement.</p>
+                <ul class="problem-list">
+                    <li>
+                        <img src="https://images.unsplash.com/photo-1513530534585-c7b1394c6d51?w=800&h=600&fit=crop&crop=center&q=80" alt="Missions chronophages" class="problem-image" loading="lazy">
+                        <strong>Missions perçues comme chronophages et complexes</strong>
+                    </li>
+                    <li>
+                        <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=800&h=600&fit=crop&crop=faces&q=80" alt="Équipes non formées" class="problem-image" loading="lazy">
+                        <strong>Équipes non formées ou réticentes à les proposer</strong>
+                    </li>
+                    <li>
+                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=800&h=600&fit=crop&crop=center&q=80" alt="Réglementation floue" class="problem-image" loading="lazy">
+                        <strong>Réglementation floue et facturation mal maîtrisée</strong>
+                    </li>
+                    <li>
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop&crop=center&q=80" alt="Relation patient" class="problem-image" loading="lazy">
+                        <strong>Crainte de perturber la relation patient</strong>
+                    </li>
+                </ul>
+                <p style="font-size: 1.1rem; font-weight: 600; color: var(--coral); text-align: center; margin-top: 2rem;">
+                    💰 Impact financier : Un manque à gagner pouvant atteindre plusieurs milliers d'euros par mois
+                </p>
             </div>
-            <p style="text-align: center; margin-top: 2rem; font-size: 0.9rem; color: var(--text-gray);">
-                * En consacrant 2 heures par jour aux nouvelles missions pharmaceutiques
-            </p>
         </div>
     </section>
 
-    <!-- Programmes Section -->
-    <section id="programmes" class="bg-light">
+    <!-- Video Presentation Section - NOUVEAU -->
+    <section id="video" class="video-presentation">
         <div class="container">
-            <h2>Programme de Formation Complet</h2>
-            <p class="section-subtitle">56 heures certifiées Qualiopi, finançables OPCO - Réparties en 4 blocs</p>
-            <div class="solution-grid">
-                <div class="solution-card scroll-animate" style="--delay: 0;">
-                    <div class="solution-icon">🎯</div>
-                    <h3>Bloc 1 : Démarche Qualité</h3>
-                    <p><strong>7 heures</strong> - Initiation à la démarche qualité de l'officine : cartographie processus, SOP, traçabilité, indicateurs PDCA.</p>
+            <h2>Découvrez comment transformer votre officine</h2>
+            <p class="section-subtitle">Une présentation complète de notre méthode éprouvée</p>
+            <div class="video-container">
+                <video width="100%" height="100%" controls controlsList="nodownload">
+                    <source src="VIDEO.mp4" type="video/mp4">
+                    Votre navigateur ne supporte pas la vidéo HTML5.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section - Transformer votre pratique -->
+    <section id="benefits" class="bg-light">
+        <div class="container">
+            <h2>Transformez votre pratique</h2>
+            <p class="section-subtitle">Des bénéfices concrets et mesurables dès le premier mois</p>
+            <div class="benefits-grid">
+                <div class="benefit-item scroll-animate">
+                    <div class="benefit-icon">✨</div>
+                    <div>
+                        <h3>Équipe valorisée</h3>
+                        <p>Vos collaborateurs deviennent de véritables conseillers santé, augmentant leur satisfaction au travail</p>
+                    </div>
                 </div>
-                <div class="solution-card scroll-animate" style="--delay: 1;">
-                    <div class="solution-icon">💊</div>
-                    <h3>Bloc 2 : Actualisation Métier</h3>
-                    <p><strong>28 heures</strong> - Entretiens : Femme enceinte, Opioïdes, Asthme, AVK, AOD. Cas pratiques, jeux de rôle, techniques d'inhalation.</p>
+                <div class="benefit-item scroll-animate">
+                    <div class="benefit-icon">🤝</div>
+                    <div>
+                        <h3>Patients fidélisés</h3>
+                        <p>Un accompagnement personnalisé qui renforce la confiance et l'adhésion thérapeutique</p>
+                    </div>
                 </div>
-                <div class="solution-card scroll-animate" style="--delay: 2;">
-                    <div class="solution-icon">⚖️</div>
-                    <h3>Bloc 3 : Législation</h3>
-                    <p><strong>7 heures</strong> - Facturation, éligibilité, RGPD, traçabilité DP/DMP, coordination MSS, conformité réglementaire complète.</p>
+                <div class="benefit-item scroll-animate">
+                    <div class="benefit-icon">📈</div>
+                    <div>
+                        <h3>Revenus additionnels</h3>
+                        <p>Générez 2 000 à 5 000€ mensuels avec seulement 2h d'entretiens par jour</p>
+                    </div>
                 </div>
-                <div class="solution-card scroll-animate" style="--delay: 3;">
-                    <div class="solution-icon">💻</div>
-                    <h3>Bloc 4 : Santé Numérique</h3>
-                    <p><strong>14 heures</strong> - Digitalisation avec PharmaConsult : automatisation entretiens, indicateurs, bilan de prévention, déploiement.</p>
+                <div class="benefit-item scroll-animate">
+                    <div class="benefit-icon">⚡</div>
+                    <div>
+                        <h3>Mise en œuvre rapide</h3>
+                        <p>Système opérationnel en 2 semaines, sans perturber votre activité habituelle</p>
+                    </div>
                 </div>
             </div>
             <div style="text-align: center; margin-top: 3rem;">
-                <p style="font-size: 1.2rem; font-weight: 600; color: var(--primary-blue); margin-bottom: 1.5rem;">
-                    🎓 Formation complète de 56 heures - Présentiel ou Distanciel
-                </p>
-                <a href="#contact" class="cta-button cta-primary" aria-label="Demander le programme détaillé">
-                    <span>Télécharger le programme complet</span>
+                <a href="#" onclick="openModal(event)" class="cta-button" aria-label="Commencer votre formation">
+                    <span>Commencer ma formation</span>
                     <span style="font-size: 1.2rem;">→</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Quality Section -->
+    <!-- Solution Section - Une formation qui change la donne -->
+    <section id="solution">
+        <div class="container">
+            <h2>Une formation qui change la donne</h2>
+            <p class="section-subtitle">56 heures de contenu premium avec méthodologie éprouvée et outils interactifs</p>
+            <div class="solution-grid">
+                <div class="solution-card scroll-animate" style="--delay: 0;">
+                    <div class="solution-icon">📋</div>
+                    <h3>Protocoles clairs</h3>
+                    <p>Guides pas à pas pour chaque type d'entretien, avec scripts et outils pratiques</p>
+                </div>
+                <div class="solution-card scroll-animate" style="--delay: 1;">
+                    <div class="solution-icon">💰</div>
+                    <h3>Facturation maîtrisée</h3>
+                    <p>Optimisez vos remboursements et évitez les erreurs coûteuses</p>
+                </div>
+                <div class="solution-card scroll-animate" style="--delay: 2;">
+                    <div class="solution-icon">💬</div>
+                    <h3>Communication fluide</h3>
+                    <p>Techniques pour proposer naturellement sans créer de friction</p>
+                </div>
+                <div class="solution-card scroll-animate" style="--delay: 3;">
+                    <div class="solution-icon">⏰</div>
+                    <h3>Organisation optimale</h3>
+                    <p>Intégrez les entretiens dans vos temps morts sans impact sur le flux</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Section - Une expérience de formation d'exception -->
     <section id="quality">
         <div class="container">
             <h2>Une expérience de formation d'exception</h2>
@@ -1789,101 +1925,71 @@
         </div>
     </section>
 
-    <!-- Problem Section -->
-    <section id="problem">
+    <!-- Programmes Section -->
+    <section id="programmes" class="bg-light">
         <div class="container">
-            <h2>Les défis actuels des officines</h2>
-            <p class="section-subtitle">Des opportunités inexploitées qui impactent votre rentabilité</p>
-            <div class="problem-card scroll-animate">
-                <p style="font-size: 1.1rem; margin-bottom: 2rem;">Les nouvelles missions pharmaceutiques représentent un potentiel de croissance exceptionnel... Pourtant, 80% des officines peinent à les mettre en œuvre efficacement.</p>
-                <ul class="problem-list">
-                    <li>Missions perçues comme chronophages et complexes</li>
-                    <li>Équipes non formées ou réticentes à les proposer</li>
-                    <li>Réglementation floue et facturation mal maîtrisée</li>
-                    <li>Crainte de perturber la relation patient</li>
-                </ul>
-                <p style="font-size: 1.1rem; font-weight: 600; color: var(--coral); text-align: center; margin-top: 2rem;">
-                    Impact financier : Un manque à gagner pouvant atteindre plusieurs milliers d'euros par mois
-                </p>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Solution Section -->
-    <section id="solution">
-        <div class="container">
-            <h2>Une formation qui change la donne</h2>
-            <p class="section-subtitle">56 heures de contenu premium avec méthodologie éprouvée et outils interactifs</p>
+            <h2>Programme de Formation Complet</h2>
+            <p class="section-subtitle">56 heures certifiées Qualiopi, finançables OPCO - Réparties en 4 blocs</p>
             <div class="solution-grid">
                 <div class="solution-card scroll-animate" style="--delay: 0;">
-                    <div class="solution-icon">📋</div>
-                    <h3>Protocoles clairs</h3>
-                    <p>Guides pas à pas pour chaque type d'entretien, avec scripts et outils pratiques</p>
+                    <div class="solution-icon">🎯</div>
+                    <h3>Bloc 1 : Démarche Qualité</h3>
+                    <p><strong>7 heures</strong> - Initiation à la démarche qualité de l'officine : cartographie processus, SOP, traçabilité, indicateurs PDCA.</p>
                 </div>
                 <div class="solution-card scroll-animate" style="--delay: 1;">
-                    <div class="solution-icon">💰</div>
-                    <h3>Facturation maîtrisée</h3>
-                    <p>Optimisez vos remboursements et évitez les erreurs coûteuses</p>
+                    <div class="solution-icon">💊</div>
+                    <h3>Bloc 2 : Actualisation Métier</h3>
+                    <p><strong>28 heures</strong> - Entretiens : Femme enceinte, Opioïdes, Asthme, AVK, AOD. Cas pratiques, jeux de rôle, techniques d'inhalation.</p>
                 </div>
                 <div class="solution-card scroll-animate" style="--delay: 2;">
-                    <div class="solution-icon">💬</div>
-                    <h3>Communication fluide</h3>
-                    <p>Techniques pour proposer naturellement sans créer de friction</p>
+                    <div class="solution-icon">⚖️</div>
+                    <h3>Bloc 3 : Législation</h3>
+                    <p><strong>7 heures</strong> - Facturation, éligibilité, RGPD, traçabilité DP/DMP, coordination MSS, conformité réglementaire complète.</p>
                 </div>
                 <div class="solution-card scroll-animate" style="--delay: 3;">
-                    <div class="solution-icon">⏰</div>
-                    <h3>Organisation optimale</h3>
-                    <p>Intégrez les entretiens dans vos temps morts sans impact sur le flux</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Benefits Section -->
-    <section id="benefits" class="bg-light">
-        <div class="container">
-            <h2>Transformez votre pratique</h2>
-            <p class="section-subtitle">Des bénéfices concrets et mesurables dès le premier mois</p>
-            <div class="benefits-grid">
-                <div class="benefit-item scroll-animate">
-                    <div class="benefit-icon">✨</div>
-                    <div>
-                        <h3>Équipe valorisée</h3>
-                        <p>Vos collaborateurs deviennent de véritables conseillers santé, augmentant leur satisfaction au travail</p>
-                    </div>
-                </div>
-                <div class="benefit-item scroll-animate">
-                    <div class="benefit-icon">🤝</div>
-                    <div>
-                        <h3>Patients fidélisés</h3>
-                        <p>Un accompagnement personnalisé qui renforce la confiance et l'adhésion thérapeutique</p>
-                    </div>
-                </div>
-                <div class="benefit-item scroll-animate">
-                    <div class="benefit-icon">📈</div>
-                    <div>
-                        <h3>Revenus additionnels</h3>
-                        <p>Générez 2 000 à 5 000€ mensuels avec seulement 2h d'entretiens par jour</p>
-                    </div>
-                </div>
-                <div class="benefit-item scroll-animate">
-                    <div class="benefit-icon">⚡</div>
-                    <div>
-                        <h3>Mise en œuvre rapide</h3>
-                        <p>Système opérationnel en 2 semaines, sans perturber votre activité habituelle</p>
-                    </div>
+                    <div class="solution-icon">💻</div>
+                    <h3>Bloc 4 : Santé Numérique</h3>
+                    <p><strong>14 heures</strong> - Digitalisation avec PharmaConsult : automatisation entretiens, indicateurs, bilan de prévention, déploiement.</p>
                 </div>
             </div>
             <div style="text-align: center; margin-top: 3rem;">
-                <a href="#" onclick="openModal(event)" class="cta-button" aria-label="Commencer votre formation">
-                    <span>Commencer ma formation</span>
+                <p style="font-size: 1.2rem; font-weight: 600; color: var(--primary-blue); margin-bottom: 1.5rem;">
+                    🎓 Formation complète de 56 heures - Présentiel ou Distanciel
+                </p>
+                <a href="#contact" class="cta-button cta-primary" aria-label="Demander le programme détaillé">
+                    <span>Télécharger le programme complet</span>
                     <span style="font-size: 1.2rem;">→</span>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Case Study Section -->
+    <!-- Bonus Section -->
+    <section id="bonus">
+        <div class="container">
+            <h2>Un bonus exclusif qui fait la différence</h2>
+            <div class="bonus-box scroll-animate">
+                <h3>🎁 Accès privilégié à notre outil digital</h3>
+                <p>Les participants bénéficient d'une réduction exclusive sur notre plateforme numérique innovante</p>
+                <div class="bonus-features">
+                    <div class="bonus-feature">
+                        <strong>⚡ Automatisation</strong>
+                        <p>Gestion simplifiée des entretiens et rappels automatiques</p>
+                    </div>
+                    <div class="bonus-feature">
+                        <strong>📊 Analyse</strong>
+                        <p>Tableaux de bord et statistiques en temps réel</p>
+                    </div>
+                    <div class="bonus-feature">
+                        <strong>🚀 Performance x3</strong>
+                        <p>Triplez votre capacité d'entretiens sans effort supplémentaire</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Study Section - Des résultats qui parlent -->
     <section id="case-study">
         <div class="container">
             <h2>Des résultats qui parlent</h2>
@@ -2028,31 +2134,35 @@
         </div>
     </section>
     
-    <!-- Bonus Section -->
-    <section id="bonus">
+    <!-- Stats Section - Ils nous font confiance -->
+    <section id="stats" class="bg-light">
         <div class="container">
-            <h2>Un bonus exclusif qui fait la différence</h2>
-            <div class="bonus-box scroll-animate">
-                <h3>🎁 Accès privilégié à notre outil digital</h3>
-                <p>Les participants bénéficient d'une réduction exclusive sur notre plateforme numérique innovante</p>
-                <div class="bonus-features">
-                    <div class="bonus-feature">
-                        <strong>⚡ Automatisation</strong>
-                        <p>Gestion simplifiée des entretiens et rappels automatiques</p>
-                    </div>
-                    <div class="bonus-feature">
-                        <strong>📊 Analyse</strong>
-                        <p>Tableaux de bord et statistiques en temps réel</p>
-                    </div>
-                    <div class="bonus-feature">
-                        <strong>🚀 Performance x3</strong>
-                        <p>Triplez votre capacité d'entretiens sans effort supplémentaire</p>
-                    </div>
+            <h2>Ils nous font confiance</h2>
+            <p class="section-subtitle">Des résultats concrets qui témoignent de notre expertise</p>
+            <div class="stats-grid">
+                <div class="stat-card scroll-animate">
+                    <span class="stat-number">+50</span>
+                    <span class="stat-label">Pharmaciens formés</span>
+                </div>
+                <div class="stat-card scroll-animate">
+                    <span class="stat-number">95%</span>
+                    <span class="stat-label">Taux de satisfaction</span>
+                </div>
+                <div class="stat-card scroll-animate">
+                    <span class="stat-number">+2400€*</span>
+                    <span class="stat-label">Revenus mensuels générés par apprenant</span>
+                </div>
+                <div class="stat-card scroll-animate">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Finançable OPCO</span>
                 </div>
             </div>
+            <p style="text-align: center; margin-top: 2rem; font-size: 0.9rem; color: var(--text-gray);">
+                * En consacrant 2 heures par jour aux nouvelles missions pharmaceutiques
+            </p>
         </div>
     </section>
-    
+
     <!-- Why Choose Section -->
     <section id="why-choose" class="bg-light">
         <div class="container">
