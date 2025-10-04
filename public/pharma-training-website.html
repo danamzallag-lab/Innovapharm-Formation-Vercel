@@ -406,33 +406,51 @@
             box-shadow: var(--shadow-lg);
         }
         
+        /* Grille responsive pour les défis - 4 colonnes sur desktop */
         .problem-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
             margin: 2rem 0;
             list-style: none;
         }
 
+        /* Responsive - 2 colonnes sur tablette */
+        @media (max-width: 1024px) {
+            .problem-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Responsive - 1 colonne sur mobile */
+        @media (max-width: 640px) {
+            .problem-list {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .problem-list li {
-            background: var(--bg-light);
-            padding: 2rem;
-            border-radius: 12px;
+            background: var(--bg-white);
+            border-radius: 16px;
             position: relative;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 500;
             color: var(--text-dark);
             border: 2px solid var(--border-light);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
             line-height: 1.6;
+            overflow: hidden;
+            /* Hauteur uniforme pour toutes les cartes */
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
         }
 
         .problem-list li:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
             border-color: var(--coral);
-            background: var(--bg-white);
         }
 
         .problem-list li::before {
@@ -446,15 +464,21 @@
 
         .problem-image {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
-            border-radius: 12px 12px 0 0;
-            margin: -2rem -2rem 1.5rem -2rem;
-            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            transition: transform 0.4s ease;
         }
 
         .problem-list li:hover .problem-image {
-            transform: scale(1.05);
+            transform: scale(1.08);
+        }
+
+        /* Conteneur pour le texte avec padding */
+        .problem-list li strong {
+            display: block;
+            padding: 1.5rem;
+            flex-grow: 1;
         }
 
         /* Video Presentation Section */
@@ -639,7 +663,7 @@
             gap: 2rem;
             margin-top: 3rem;
         }
-        
+
         .benefit-item {
             display: flex;
             align-items: flex-start;
@@ -675,7 +699,7 @@
         .benefit-item:hover::before {
             left: 100%;
         }
-        
+
         .benefit-icon {
             font-size: 2rem;
             background: linear-gradient(135deg, var(--turquoise), var(--emerald));
@@ -691,7 +715,7 @@
         .benefit-item:hover .benefit-icon {
             transform: scale(1.2) rotate(10deg);
         }
-        
+
         .benefit-item h3 {
             font-size: 1.2rem;
             color: var(--primary-blue);
@@ -1817,7 +1841,7 @@
                     <div class="benefit-icon">📈</div>
                     <div>
                         <h3>Revenus additionnels</h3>
-                        <p>Générez 2 000 à 5 000€ mensuels avec seulement 2h d'entretiens par jour</p>
+                        <p>Générez <strong style="font-size: 1.15em;">2 000</strong> à <strong style="font-size: 1.15em;">5 000€</strong> mensuels avec seulement <strong style="font-size: 1.15em;">2h</strong> d'entretiens par jour</p>
                     </div>
                 </div>
                 <div class="benefit-item scroll-animate">
@@ -2149,7 +2173,7 @@
                     <span class="stat-label">Taux de satisfaction</span>
                 </div>
                 <div class="stat-card scroll-animate">
-                    <span class="stat-number">+2400€*</span>
+                    <span class="stat-number" style="margin-left: -1rem;">+2400€<sup style="font-size: 1.5rem; margin-left: 0.2rem;">*</sup></span>
                     <span class="stat-label">Revenus mensuels générés par apprenant</span>
                 </div>
                 <div class="stat-card scroll-animate">
